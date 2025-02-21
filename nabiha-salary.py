@@ -20,14 +20,25 @@ for i in range(len(finances)):
 
     percentages.append(percentage)
 
+results = []
+
 for i in range(len(percentages)):
     result = percentages[i] * salary / 100
-    print("The amount allocated to " + str(finances[i]) + " in " + str(month) + " is: " + str(result) + " $\n")
+    print("The amount allocated to " + str(finances[i]) + " in " + str(month) + " is: " + str(result) + "$\n")
+    results.append(result)
 
 total = sum(percentages) * salary / 100
 
-print("The total spending in " + str(month) + " is: " + str(total) + " $\n")
+print("The total spending in " + str(month) + " is: " + str(total) + "$\n")
 
 remainder = salary - total
 
-print("The remainder for "+ str(month) + " is: " + str(remainder) + " $\n")
+print("The remainder for "+ str(month) + " is: " + str(remainder) + "$\n")
+
+yearlyrent = (results[1] + results[2]) * 12
+
+print("Nabiha's yearly rent and electricity costs is: " + str(yearlyrent) + "$\n")
+
+powered = pow(salary, 2)
+
+print("Nabiha's total salary for the month raised to the power of 2 (just for fun) is: " + str(powered) + "$\n")
