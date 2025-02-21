@@ -2,7 +2,7 @@ print ("Hello Nabiha\n")
 
 salary = input("Please enter your Salary:\n")
 
-while not salary.isdigit() or int(salary) < 0:
+while not salary.isdigit() or int(salary) <= 0:
     salary = input("Please enter a proper Salary:\n")
 
 
