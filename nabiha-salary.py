@@ -2,7 +2,10 @@ print ("Hello Nabiha\n")
 
 salary = int(input("Please enter your Salary:\n"))
 
-month = input("Please enter the month of this salary:\n")
+month = int(input("Please enter the month of this salary in numbers (1-->12):\n"))
+
+while month > 12 or month < 1 :
+    month = int(input("Enter a valid month number (1-->12):\n"))
 
 finances = ["Savings", "Rent", "Electricity"]
 
