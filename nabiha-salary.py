@@ -2,10 +2,14 @@ print ("Hello Nabiha\n")
 
 salary = int(input("Please enter your Salary:\n"))
 
-month = int(input("Please enter the month of this salary in numbers (1-->12):\n"))
+months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"]
 
-while month > 12 or month < 1 :
-    month = int(input("Enter a valid month number (1-->12):\n"))
+month = input("Please enter the month of this salary in numbers (1-->12):\n")
+
+while month == "" or int(month) > 12 or int(month) < 1:
+    month = input("Enter a valid month number (1-->12):\n")
+
+month = months[int(month) - 1]
 
 finances = ["Savings", "Rent", "Electricity"]
 
@@ -18,12 +22,12 @@ for i in range(len(finances)):
 
 for i in range(len(percentages)):
     result = percentages[i] * salary / 100
-    print("The amount allocated to " + str(finances[i]) + " is: " + str(result) + " $\n")
+    print("The amount allocated to " + str(finances[i]) + " in " + str(month) + " is: " + str(result) + " $\n")
 
 total = sum(percentages) * salary / 100
 
-print("The total spending is: " + str(total) + " $\n")
+print("The total spending in " + str(month) + " is: " + str(total) + " $\n")
 
 remainder = salary - total
 
-print("The remainder is: " + str(remainder) + " $\n")
+print("The remainder for "+ str(month) + " is: " + str(remainder) + " $\n")
