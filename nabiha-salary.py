@@ -1,12 +1,16 @@
 print ("Hello Nabiha\n")
 
-salary = int(input("Please enter your Salary:\n"))
+salary = input("Please enter your Salary:\n")
 
-months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"]
+while not salary.isdigit() or int(salary) < 0:
+    salary = input("Please enter a proper Salary:\n")
+
+
+months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 month = input("Please enter the month of this salary in numbers (1-->12):\n")
 
-while month == "" or int(month) > 12 or int(month) < 1:
+while not month.isdigit() or not (1 <= int(month) <= 12):
     month = input("Enter a valid month number (1-->12):\n")
 
 month = months[int(month) - 1]
@@ -15,30 +19,39 @@ finances = ["Savings", "Rent", "Electricity"]
 
 percentages = []
 
-for i in range(len(finances)):
-    percentage = int(input("Enter the percentage for " + finances[i] +"\n"))
+total_percentage = 0
 
-    percentages.append(percentage)
+for i in range(len(finances)):
+    while True:
+        percentage = input("Enter the percentage for " + str(finances[i]) + " :\n")
+        if not percentage.isdigit() or int(percentage) < 0:
+            print("Please enter a proper percentage (1-->100).\n")
+        elif total_percentage + int(percentage) > 100:
+            print("The total percentage exceeds 100%, please enter a lower value.\n")
+        else:
+            break
+    percentages.append(int(percentage))
+    total_percentage += int(percentage)
 
 results = []
 
 for i in range(len(percentages)):
-    result = percentages[i] * salary / 100
-    print("The amount allocated to " + str(finances[i]) + " in " + str(month) + " is: " + str(result) + "$\n")
+    result = percentages[i] * int(salary) / 100
+    print("The amount allocated to " + str(finances[i]) + " in " + str(month) + " is: $" + str(result) + "\n")
     results.append(result)
 
-total = sum(percentages) * salary / 100
+total = sum(percentages) * int(salary) / 100
 
-print("The total spending in " + str(month) + " is: " + str(total) + "$\n")
+print("The total spending in " + str(month) + " is: $" + str(total) + "\n")
 
-remainder = salary - total
+remainder = int(salary) - total
 
-print("The remainder for "+ str(month) + " is: " + str(remainder) + "$\n")
+print("The remainder for "+ str(month) + " is: $" + str(remainder) + "\n")
 
 yearlyrent = (results[1] + results[2]) * 12
 
-print("Nabiha's yearly rent and electricity costs is: " + str(yearlyrent) + "$\n")
+print("Nabiha's yearly rent and electricity costs is: $" + str(yearlyrent) + "\n")
 
-powered = pow(salary, 2)
+powered = pow(int(salary), 2)
 
-print("Nabiha's total salary for the month raised to the power of 2 (just for fun) is: " + str(powered) + "$\n")
+print("Nabiha's total salary for the month raised to the power of 2 (just for fun) is: $" + str(powered) + "\n")
