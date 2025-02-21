@@ -55,3 +55,20 @@ print("Nabiha's yearly rent and electricity costs is: $" + str(yearlyrent) + "\n
 powered = pow(int(salary), 2)
 
 print("Nabiha's total salary for the month raised to the power of 2 (just for fun) is: $" + str(powered) + "\n")
+
+answer = input("Is there additional savings? Y/N \n").strip().upper()
+
+while answer not in ("Y", "N"):
+    answer = input("Please enter Y or N \n").strip().upper()
+
+if answer == "Y":
+    if results[0] == 0:
+        print("Total savings allocation is 0, so the division cannot be performed.")
+    else:
+        additional_savings = input("Please enter the value:\n") 
+        while not additional_savings.isdigit():
+            additional_savings = input("Please enter a proper value:\n") 
+        ratio = int(additional_savings) / results[0]
+        print("The additional savings divided by the total savings allocation is: " + str(ratio))
+elif answer == "N":
+    print("There's no additional savings, Good Bye.\n")
